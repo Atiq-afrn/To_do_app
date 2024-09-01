@@ -42,8 +42,11 @@ class _HomepageState extends State<Homepage> {
                       itemBuilder: (context, Index) {
                         DocumentSnapshot docsnap = snapshot.data.docs[Index];
                         return CheckboxListTile(
-                          activeColor: Colors.blue.shade400,
-                          title: Text(docsnap['work']),
+                          activeColor: Colors.green,
+                          title: Text(
+                            docsnap['work'],
+                            style: const TextStyle(color: Colors.white),
+                          ),
                           value: docsnap["Yes"],
                           onChanged: (newvalue) async {
                             DatabaseService().tickMethod(
@@ -54,7 +57,7 @@ class _HomepageState extends State<Homepage> {
                                         ? "College"
                                         : "Office");
                             setState(() {
-                              Future.delayed(const Duration(seconds: 4), () {
+                              Future.delayed(const Duration(seconds: 2), () {
                                 DatabaseService().removeMethod(
                                     docsnap["id"],
                                     personel
@@ -93,9 +96,9 @@ class _HomepageState extends State<Homepage> {
         decoration: const BoxDecoration(
             gradient: LinearGradient(
           colors: [
-            Color.fromARGB(255, 207, 112, 224),
-            Color.fromARGB(255, 183, 237, 185),
-            Color.fromARGB(255, 224, 148, 173)
+            Color.fromARGB(255, 126, 119, 131),
+            Color.fromARGB(255, 108, 110, 108),
+            Color.fromARGB(255, 69, 69, 69)
           ],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -114,14 +117,14 @@ class _HomepageState extends State<Homepage> {
               padding: const EdgeInsets.only(left: 20),
               child: const Text(
                 "Atiq ",
-                style: TextStyle(fontSize: 40),
+                style: TextStyle(fontSize: 40, color: Colors.white60),
               ),
             ),
             Container(
               padding: const EdgeInsets.only(left: 20),
               child: const Text(
                 "Let's get the work",
-                style: TextStyle(fontSize: 18, color: Colors.black54),
+                style: TextStyle(fontSize: 18, color: Colors.black),
               ),
             ),
             const SizedBox(
@@ -314,7 +317,7 @@ class _HomepageState extends State<Homepage> {
                       Navigator.pop(context);
                     },
                     child: Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(6),
                       width: 80,
                       decoration: BoxDecoration(
                           color: Colors.blue,
